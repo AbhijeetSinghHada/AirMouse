@@ -1,5 +1,3 @@
-from tkinter import LEFT, Button
-from turtle import down
 import cv2
 import numpy as np
 import HandTrainingModule as htm
@@ -48,13 +46,13 @@ while True:
         clocX = plocX + (x3 - plocX) / smoothening
         clocY = plocY + (y3 - plocY) / smoothening
         autopy.mouse.move(wScr - clocX, clocY)
-        autopy.mouse.toggle(button: Button=None, down: bool)
+        autopy.mouse.toggle( Button=None, down=bool)
         cv2.circle(img, (x1, y1), 15, (255, 0, 255), cv2.FILLED)
         plocX, plocY = clocX, clocY
         
     if fingers[1] == 1 and fingers[2] == 1:
         length, img, lineInfo = detector.findDistance(8, 12, img)
-        print(length)
+        # print(length)
         if length < 40:
             cv2.circle(img, (lineInfo[4], lineInfo[5]),15, (0, 255, 0), cv2.FILLED)
             autopy.mouse.click()
